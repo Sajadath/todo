@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@layer components {
+  button {
+    @apply cursor-pointer;
+  }
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-indigo-500;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-indigo-300;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-50;
+  }
+}
+
+:root {
+  --card: rgba(255, 255, 255, 0.7); /* Translucent white for cards */
+  --card-foreground: #374151; /* Dark grey for card text */
+}
+
+@theme inline {
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+}
