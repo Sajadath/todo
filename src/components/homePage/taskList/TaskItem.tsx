@@ -11,9 +11,9 @@ import { MdDelete } from "react-icons/md";
 import { RiSave3Fill } from "react-icons/ri";
 import { VscDiscard } from "react-icons/vsc";
 import { toast } from "react-toastify";
-import SelectCategory from "./SelectCategory";
-import StyledCheckBox from "./StyledCheckBox";
-import StyledTextInput from "./StyledInput";
+import SelectCategory from "@/components/ui/inputs/select/SelectCategory";
+import StyledCheckBox from "@/components/ui/inputs/checkbox/StyledCheckBox";
+import StyledTextInput from "@/components/ui/inputs/text/StyledInput";
 
 const patrickHand = Patrick_Hand({
   subsets: ["latin"],
@@ -164,7 +164,7 @@ export default function TaskItem({
       exit={{ opacity: 0, translateX: 40, translateY: 0 }}
       layout
       transition={{ duration: 0.3, ease: "easeInOut" }}
-      className={`transition-shadow hover:shadow-2xl duration-500 border-gray-500 max-w-2xl my-1 mx-auto w-full  relative border-dashed overflow-hidden   bg-card/70 p-3 rounded-2xl   ${
+      className={`transition-shadow hover:shadow-2xl dark:hover:shadow-black/75 duration-500 border-gray-500 dark:border-gray-400 max-w-2xl my-1 mx-auto w-full  relative border-dashed overflow-hidden   bg-card/70 dark:bg-card/80 p-3 pl-5 rounded-2xl   ${
         isBeingEdited ? "border-2   " : "border-0"
       }`}
     >
@@ -175,7 +175,7 @@ export default function TaskItem({
             animate={{ height: task.isCompleted ? "100%" : 0 }}
             exit={{ height: 0 }}
             transition={{ duration: 0.3 }}
-            className="absolute top-0 left-0  w-2 -z-2 rounded-t-2xl  inset-0  bg-green-600"
+            className="absolute top-0 left-0  w-2  rounded-t-2xl  inset-0  bg-doneGreen "
           />
         )}
       </AnimatePresence>
@@ -197,7 +197,11 @@ export default function TaskItem({
                 <p
                   className={`font-medium text-wrap transition-all duration-300 text-2xl max-w-full ${
                     patrickHand.className
-                  }  ${task.isCompleted ? "line-through text-gray-400" : ""}`}
+                  }  ${
+                    task.isCompleted
+                      ? "line-through text-gray-400 dark:text-gray-500"
+                      : ""
+                  }`}
                   style={{
                     wordWrap: "break-word",
                     overflowWrap: "break-word",
@@ -208,7 +212,7 @@ export default function TaskItem({
                 </p>
               )}
             </div>
-            <span className="text-xs text-gray-500">
+            <span className="text-xs text-gray-500 dark:text-gray-400">
               {new Date(task.createdAt).toLocaleDateString()}
             </span>
           </div>
@@ -233,7 +237,7 @@ export default function TaskItem({
                   overflowWrap: "break-word",
                   wordBreak: "break-word",
                 }}
-                className="px-2 py-1 border border-indigo-500 text-indigo-500 my-auto rounded-2xl"
+                className="px-2 py-1 border border-indigo-500 dark:border-indigo-400 text-indigo-500 dark:text-indigo-400 my-auto rounded-2xl"
               >
                 {task.category.name}
               </div>
@@ -243,7 +247,7 @@ export default function TaskItem({
                 <>
                   <button
                     key={`cancel-editing-${task.id}`}
-                    className=" text-card-foreground my-2 font-semibold p-1 hover:text-card-foreground/70 duration-300 rounded-md flex items-center justify-center gap-1 "
+                    className=" text-card-foreground my-2 font-semibold p-1 hover:text-card-foreground/70 dark:hover:text-card-foreground/80 duration-300 rounded-md flex items-center justify-center gap-1 "
                     onClick={() => {
                       setIsBeingEdited(false);
                       setEditedTitle(task.title);
@@ -262,7 +266,7 @@ export default function TaskItem({
                   <button
                     key={`save-editing-${task.id}`}
                     onClick={handleSubmit}
-                    className=" text-card-foreground my-2 font-semibold p-1 hover:text-card-foreground/70 duration-300 rounded-md flex items-center justify-center gap-1 "
+                    className=" text-card-foreground my-2 font-semibold p-1 hover:text-card-foreground/70 dark:hover:text-card-foreground/80 duration-300 rounded-md flex items-center justify-center gap-1 "
                   >
                     <RiSave3Fill className="size-5 " />
                     Save
@@ -272,7 +276,7 @@ export default function TaskItem({
                 <>
                   <button
                     key={`edit-task-${task.id}`}
-                    className="text-card-foreground flex items-center justify-center transition-all duration-300 my-2 font-semibold px-1 py-1 rounded-md hover:text-card-foreground/70 "
+                    className=" text-card-foreground flex items-center justify-center transition-all duration-300 my-2 font-semibold px-1 py-1 rounded-md hover:text-card-foreground/30 dark:hover:text-card-foreground/30 "
                     onClick={() => setIsBeingEdited(true)}
                   >
                     <LiaEdit className="size-5 " />
@@ -280,7 +284,7 @@ export default function TaskItem({
                   <button
                     key={`delete-task-${task.id}`}
                     onClick={handleDelete}
-                    className="text-card-foreground flex items-center justify-center transition-all duration-300 my-2 font-semibold px-1 py-1 rounded-md hover:text-card-foreground/70 "
+                    className="text-card-foreground flex items-center justify-center transition-all duration-300 my-2 font-semibold px-1 py-1 rounded-md hover:text-card-foreground/30 dark:hover:text-card-foreground/30 "
                   >
                     <MdDelete className="size-5 " />
                   </button>

@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 
 const StyledCheckBox = ({
@@ -30,13 +32,20 @@ const StyledCheckBox = ({
     transition: "opacity 0.2s ease",
   };
 
+  const getStrokeColor = () => {
+    if (hover || checked) {
+      return "var(--doneGreen)"; // Green when checked/hovered (same for both themes)
+    }
+    return "#c8d4ca"; // Darker gray for dark mode
+  };
+
   const svgStyle: React.CSSProperties = {
     position: "relative",
     zIndex: 1,
     fill: "none",
     strokeLinecap: "round",
     strokeLinejoin: "round",
-    stroke: hover || checked ? "#329e49" : "#c8d4ca",
+    stroke: getStrokeColor(),
     strokeWidth: 1.5,
     transform: "translate3d(0, 0, 0)",
     transition: "all 0.2s ease",

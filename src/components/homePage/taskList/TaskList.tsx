@@ -22,12 +22,11 @@ export default function TaskList() {
           (task) => task.category.categoryId === activeCategory.categoryId
         );
 
-  console.log("Categories", categories);
-  console.log("Tasks", tasks);
-
   return (
     <ul className="gap-3 pb-5 flex w-full   flex-col   ">
-      <h2 className="w-fit mx-auto font-semibold text-2xl">Tasks</h2>
+      <h2 className="w-fit mx-auto font-semibold text-2xl dark:text-gray-100">
+        Tasks
+      </h2>
       <div className="flex items-center justify-center">
         <AllCategoryButton
           activeCategory={activeCategory}

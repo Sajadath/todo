@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
-@layer components {
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
   button {
     @apply cursor-pointer;
   }
@@ -16,18 +18,22 @@
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-indigo-300;
   }
-
-  ::-webkit-scrollbar-track {
-    @apply bg-gray-50;
-  }
 }
 
 :root {
   --card: rgba(255, 255, 255, 0.7); /* Translucent white for cards */
   --card-foreground: #374151; /* Dark grey for card text */
+  --doneGreen: #00c950;
+}
+
+.dark {
+  --card: rgba(30, 41, 59, 0.8); /* Translucent dark slate for cards */
+  --card-foreground: #f1f5f9; /* Light grey for card text */
+  --doneGreen: #00c950;
 }
 
 @theme inline {
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
+  --color-doneGreen: var(--doneGreen);
 }

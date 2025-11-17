@@ -30,7 +30,7 @@ export function DecodeText({ text }: { text: string }) {
   }, [text]);
 
   return (
-    <span className="font-mono tracking-wide text-red-600 text-xs">
+    <span className="font-mono tracking-wide text-red-600 dark:text-red-500 text-xs">
       {displayed.map((ch, i) => (
         <span key={i}>{ch}</span>
       ))}

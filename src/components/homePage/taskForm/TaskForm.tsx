@@ -5,12 +5,12 @@ import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { toast } from "react-toastify";
 import CustomHeadLine from "./CustomHeadLine";
-import SelectCategory from "./SelectCategory";
-import StyledTextInput from "./StyledInput";
+import SelectCategory from "@/components/ui/inputs/select/SelectCategory";
+import StyledTextInput from "@/components/ui/inputs/text/StyledInput";
 
 import { useActiveCategoryStore } from "@/lib/store/activeCategoryStore";
 import { RiResetLeftFill } from "react-icons/ri";
-import { DecodeText } from "./DecodeText";
+import { DecodeText } from "@/components/ui/specials/decodeError/DecodeText";
 
 type Errors = {
   category: {
@@ -149,11 +149,11 @@ export default function TaskForm() {
       />
       <form
         onSubmit={handleSubmit}
-        className="bg-card/60  shadow-sm w-full hover:shadow-2xl transition-all duration-300 rounded-lg  mx-auto p-4  max-w-lg flex flex-col gap-2  "
+        className="bg-card/60 dark:bg-card/80 shadow-sm w-full hover:shadow-2xl dark:hover:shadow-black/50 transition-all duration-300 rounded-3xl  mx-auto p-4  max-w-lg flex flex-col gap-2  "
       >
         <ul>
           {errors.title.hasError && errors.title.message && (
-            <li className="text-xs text-red-600 border-l-2 rounded-tl-xl border-red-600 pl-2">
+            <li className="text-xs  border-l-2 rounded-tl-xl border-red-600 dark:border-red-500 pl-2">
               <DecodeText text={errors.title.message} />
             </li>
           )}
@@ -168,7 +168,7 @@ export default function TaskForm() {
             handleOnBlur={checkTitleError}
             customClassName={
               errors.title.hasError
-                ? "ring-2 ring-red-500 placeholder:text-red-300 "
+                ? "ring-2 ring-red-600 dark:ring-red-500 placeholder:text-red-300 dark:placeholder:text-red-500 "
                 : ""
             }
           />
@@ -200,14 +200,14 @@ export default function TaskForm() {
                   });
                 }}
                 type="button"
-                className="flex hover:text-indigo-500 transition-all duration-300 items-center justify-center gap-2"
+                className="flex items-center justify-center gap-2 transition-all duration-300 hover:text-indigo-500 dark:text-gray-300 dark:hover:text-indigo-400"
               >
                 <RiResetLeftFill className="size-4" />
                 Reset
               </button>
               <button
                 type="submit"
-                className="px-3 py-2 transition-all duration-300 rounded-md flex items-center justify-center gap-1 bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-300"
+                className="px-3 py-2 transition-all duration-300 rounded-md flex items-center justify-center gap-1 bg-indigo-600 dark:bg-indigo-500 text-white text-sm font-medium hover:bg-indigo-700 dark:hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-300 dark:focus:ring-indigo-400"
               >
                 <FaPlus className="size-4" />
                 Create Task

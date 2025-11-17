@@ -3,7 +3,7 @@ import { useTaskStore } from "@/lib/store/taskStore";
 
 import { motion } from "motion/react";
 import React from "react";
-import { DecodeText } from "./DecodeText";
+import { DecodeText } from "@/components/ui/specials/decodeError/DecodeText";
 
 function SelectCategory({
   hasError,
@@ -29,12 +29,14 @@ function SelectCategory({
   const categories = useTaskStore((state) => state.categories);
 
   return (
-    <div className="my-2 ">
-      <div className="flex gap-2">
-        <h2 className="text-sm mb-2 font-semibold"> Category </h2>
+    <div className="my-2 grow sm:grow-0">
+      <div className="flex gap-2 items-center">
+        <h2 className="text-sm mb-2 font-semibold dark:text-gray-100">
+          Category
+        </h2>
         <ul>
           {hasError && errorMessage && (
-            <li className="text-xs text-red-600 border-l-2 rounded-tl-xl border-red-600 pl-2">
+            <li className="text-xs pb-1 border-l-2 rounded-tl-xl border-red-600 dark:border-red-500 pl-2">
               <DecodeText text={errorMessage} />
             </li>
           )}
@@ -58,15 +60,14 @@ function SelectCategory({
       <div className="flex">
         {mode === "select" &&
           (categories.length > 0 ? (
-            <div className="mt-5 flex flex-wrap items-center gap-2 max-w-full justify-center w-fit mx-auto">
-              <p className="font-semibold text-xs">Category :</p>
+            <div className="mt-5 mx-auto flex flex-wrap items-center gap-2 max-w-full justify-center w-fit ">
               <select
                 style={{
                   wordWrap: "break-word",
                   overflowWrap: "break-word",
                   wordBreak: "break-word",
                 }}
-                className="hover:cursor-pointer bg-gray-50 text-wrap p-2 max-w-full text-xs"
+                className="hover:cursor-pointer bg-gray-50 text-wrap p-2 w-[15rem] text-xs dark:bg-gray-800 dark:text-gray-200"
                 onChange={(e) => setSelectedCategoryId(e.target.value)}
                 value={selectedCategoryId ? selectedCategoryId : ""}
               >
@@ -81,16 +82,13 @@ function SelectCategory({
               </select>
             </div>
           ) : (
-            <p className="text-xs text-center text-gray-500 mt-3">
+            <p className="text-xs text-center text-gray-500 dark:text-gray-400 mt-3">
               There is no category
             </p>
           ))}
 
         {mode === "add" && (
           <div className="mt-5 flex items-center gap-2 justify-center w-fit mx-auto">
-            <p className="font-semibold text-xs whitespace-nowrap">
-              Category :
-            </p>
             <input
               maxLength={30}
               value={newCategoryName}
@@ -98,7 +96,7 @@ function SelectCategory({
                 setNewCategoryName(e.target.value);
               }}
               placeholder="New Category Name"
-              className="w-full border border-gray-200 text-xs rounded-md px-3 py-2 focus:ring-2 focus:ring-indigo-500 focus:placeholder:text-indigo-300 focus:outline-none"
+              className="w-[15rem] border border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 text-xs rounded-md px-3 py-2 focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:placeholder:text-indigo-300 dark:focus:placeholder:text-indigo-500 focus:outline-none"
             />
           </div>
         )}
@@ -122,7 +120,7 @@ function SelectModeButton({
 }) {
   return (
     <button
-      className="py-3 transition-all  font-semibold relative duration-300  px-4 rounded-t-lg hover:text-indigo-600"
+      className="py-3 transition-all  font-semibold relative duration-300  px-4 rounded-t-lg hover:text-indigo-600 dark:text-gray-300 dark:hover:text-indigo-400"
       onClick={() => setMode(setToMode)}
       type="button"
     >
@@ -130,7 +128,7 @@ function SelectModeButton({
       {currentMode === setToMode && (
         <motion.span
           layoutId={layoutId}
-          className="bottom-0 left-0 right-0 h-1 bg-indigo-500 absolute"
+          className="bottom-0 left-0 right-0 h-1 bg-indigo-500 dark:bg-indigo-400 absolute"
         ></motion.span>
       )}
     </button>

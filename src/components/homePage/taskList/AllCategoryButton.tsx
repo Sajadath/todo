@@ -15,7 +15,7 @@ export default function AllCategoryButton({
         <button
           key={"AllCategoryButton"}
           onClick={() => setActiveCategory({ categoryId: "All", name: "All" })}
-          className={`px-3 py-1.5 relative  rounded-full transition-all duration-300 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-indigo-300   ${
+          className={`px-3 py-1.5 relative  rounded-full transition-all duration-300 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-indigo-300 dark:focus:ring-indigo-400 dark:focus:ring-offset-gray-800   ${
             activeCategory.categoryId === "All"
               ? "text-white"
               : " text-card-foreground"
@@ -26,7 +26,7 @@ export default function AllCategoryButton({
           {activeCategory.categoryId === "All" && (
             <motion.div
               layoutId={`category-indicator`}
-              className={`absolute inset-0 rounded-full -z-1 bg-indigo-600
+              className={`absolute inset-0 rounded-full -z-1 bg-indigo-600 dark:bg-indigo-500
                 `}
             />
           )}

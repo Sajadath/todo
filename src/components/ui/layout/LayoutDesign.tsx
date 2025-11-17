@@ -3,8 +3,8 @@ import { useModalStore } from "@/lib/store/modalStore";
 import { AnimatePresence } from "motion/react";
 import { ReactNode } from "react";
 import { ToastContainer } from "react-toastify";
-import DeleteModal from "./DeleteModal";
-import Header from "./Header";
+import DeleteModal from "@/components/ui/modals/deleteModal/DeleteModal";
+import Header from "@/components/header/Header";
 
 function LayoutDesign({ children }: { children: ReactNode }) {
   const { isModalOpen } = useModalStore((state) => state);
