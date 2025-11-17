@@ -22,13 +22,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={` text-gray-900 dark:text-gray-100 min-h-screen w-screen overflow-x-hidden  ${inter.className}  bg-gradient-to-br from-slate-100 via-gray-100 to-slate-200 dark:from-slate-900 dark:via-gray-900 dark:to-slate-800  selection:bg-indigo-500 dark:selection:bg-indigo-400 selection:text-white transition-colors duration-300`}
+        className={` text-gray-900 dark:text-gray-100 min-h-screen w-screen overflow-x-hidden  ${inter.className}  bg-gradient-to-br from-slate-100 via-gray-100 to-slate-200 dark:from-slate-900 dark:via-gray-900 dark:to-slate-800  selection:bg-indigo-500 dark:selection:bg-indigo-400 selection:text-white transition-colors duration-800`}
       >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem={true}
-          disableTransitionOnChange
           themes={themesOptions}
         >
           <LayoutDesign>{children}</LayoutDesign>
