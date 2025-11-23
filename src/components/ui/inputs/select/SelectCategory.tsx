@@ -1,9 +1,10 @@
 "use client";
-import { useTaskStore } from "@/lib/store/taskStore";
-
-import { motion } from "motion/react";
-import React from "react";
 import { DecodeText } from "@/components/ui/specials/decodeError/DecodeText";
+import { useTaskStore } from "@/lib/store/taskStore";
+import React from "react";
+import SelectModeButton from "@/components/ui/inputs/select/SelectModeButton";
+import CreateNewCategoryInput from "@/components/ui/inputs/text/CreateNewCategoryInput";
+import CategorySelection from "@/components/ui/inputs/select/CategorySelection";
 
 function SelectCategory({
   hasError,
@@ -56,31 +57,14 @@ function SelectCategory({
           setMode={setMode}
         />
       </div>
-      {/* fixed */}
-      <div className="flex">
+      <div className="mt-5 flex items-center  justify-center w-full">
         {mode === "select" &&
           (categories.length > 0 ? (
-            <div className="mt-5 mx-auto flex flex-wrap items-center gap-2 max-w-full justify-center w-fit ">
-              <select
-                style={{
-                  wordWrap: "break-word",
-                  overflowWrap: "break-word",
-                  wordBreak: "break-word",
-                }}
-                className="hover:cursor-pointer bg-gray-50 text-wrap p-2 w-[15rem] text-xs dark:bg-gray-800 dark:text-gray-200"
-                onChange={(e) => setSelectedCategoryId(e.target.value)}
-                value={selectedCategoryId ? selectedCategoryId : ""}
-              >
-                <option value="" hidden>
-                  Select a category
-                </option>
-                {categories.map((category, index) => (
-                  <option key={index} value={category.categoryId}>
-                    {category.name}
-                  </option>
-                ))}
-              </select>
-            </div>
+            <CategorySelection
+              categories={categories}
+              selectedCategoryId={selectedCategoryId}
+              setSelectedCategoryId={setSelectedCategoryId}
+            />
           ) : (
             <p className="text-xs text-center text-gray-500 dark:text-gray-400 mt-3">
               There is no category
@@ -88,17 +72,10 @@ function SelectCategory({
           ))}
 
         {mode === "add" && (
-          <div className="mt-5 flex items-center gap-2 justify-center w-fit mx-auto">
-            <input
-              maxLength={30}
-              value={newCategoryName}
-              onChange={(e) => {
-                setNewCategoryName(e.target.value);
-              }}
-              placeholder="New Category Name"
-              className="w-[15rem] border border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 text-xs rounded-md px-3 py-2 focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:placeholder:text-indigo-300 dark:focus:placeholder:text-indigo-500 focus:outline-none"
-            />
-          </div>
+          <CreateNewCategoryInput
+            setNewCategoryName={setNewCategoryName}
+            newCategoryName={newCategoryName}
+          />
         )}
       </div>
     </div>
@@ -106,31 +83,3 @@ function SelectCategory({
 }
 
 export default SelectCategory;
-
-function SelectModeButton({
-  setToMode,
-  currentMode,
-  layoutId,
-  setMode,
-}: {
-  setToMode: "select" | "add";
-  currentMode: "select" | "add";
-  layoutId: string;
-  setMode: React.Dispatch<React.SetStateAction<"select" | "add">>;
-}) {
-  return (
-    <button
-      className="py-3 transition-all  font-semibold relative duration-300  px-4 rounded-t-lg hover:text-indigo-600 dark:text-gray-300 dark:hover:text-indigo-400"
-      onClick={() => setMode(setToMode)}
-      type="button"
-    >
-      {setToMode === "select" ? "Select  category" : "Add a new category"}
-      {currentMode === setToMode && (
-        <motion.span
-          layoutId={layoutId}
-          className="bottom-0 left-0 right-0 h-1 bg-indigo-500 dark:bg-indigo-400 absolute"
-        ></motion.span>
-      )}
-    </button>
-  );
-}

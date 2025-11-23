@@ -34,9 +34,9 @@ const StyledCheckBox = ({
 
   const getStrokeColor = () => {
     if (hover || checked) {
-      return "var(--doneGreen)"; // Green when checked/hovered (same for both themes)
+      return "var(--doneGreen)";
     }
-    return "#c8d4ca"; // Darker gray for dark mode
+    return "#c8d4ca";
   };
 
   const svgStyle: React.CSSProperties = {

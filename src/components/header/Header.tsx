@@ -1,7 +1,6 @@
 import FadingLine from "@/components/ui/specials/fadingLine/FadingLine";
 import ThemeToggle from "./ThemeToggle";
 import localFont from "next/font/local";
-// Update the path to your font file as needed
 const asimovianFont = localFont({
   src: "../../../public/asimovian.ttf",
 });

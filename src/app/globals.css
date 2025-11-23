@@ -20,15 +20,23 @@
   }
 }
 
+@layer utilities {
+  .breakingWords {
+    word-wrap: "break-word";
+    overflow-wrap: "break-word";
+    word-break: "break-word";
+  }
+}
+
 :root {
-  --card: rgba(255, 255, 255, 0.7); /* Translucent white for cards */
-  --card-foreground: #374151; /* Dark grey for card text */
+  --card: rgba(255, 255, 255, 0.7);
+  --card-foreground: #374151;
   --doneGreen: #00c950;
 }
 
 .dark {
-  --card: rgba(30, 41, 59, 0.8); /* Translucent dark slate for cards */
-  --card-foreground: #f1f5f9; /* Light grey for card text */
+  --card: rgba(30, 41, 59, 0.8);
+  --card-foreground: #f1f5f9;
   --doneGreen: #00c950;
 }
 

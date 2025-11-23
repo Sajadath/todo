@@ -18,14 +18,14 @@ export function DecodeText({ text }: { text: string }) {
     const interval = setInterval(() => {
       setDisplayed((prev) =>
         prev.map((ch, idx) => {
-          if (idx < i) return text[idx]; // already decoded
-          if (text[idx] === " ") return " "; // keep spaces
-          return getRandomChar(); // still scrambling
+          if (idx < i) return text[idx];
+          if (text[idx] === " ") return " ";
+          return getRandomChar();
         })
       );
       i++;
       if (i > text.length) clearInterval(interval);
-    }, 50); // speed of reveal
+    }, 50);
     return () => clearInterval(interval);
   }, [text]);
 

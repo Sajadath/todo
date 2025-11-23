@@ -17,7 +17,7 @@ import StyledTextInput from "@/components/ui/inputs/text/StyledInput";
 
 const patrickHand = Patrick_Hand({
   subsets: ["latin"],
-  weight: "400", // Patrick Hand only comes in one weight
+  weight: "400",
   variable: "--font-patrick-hand",
 });
 
@@ -79,7 +79,6 @@ export default function TaskItem({
       category: { hasError: false, message: null },
     });
 
-    // check for empty title
     if (!editedTitle.trim()) {
       setErrors((prev) => ({
         ...prev,
@@ -90,7 +89,7 @@ export default function TaskItem({
       }));
       return;
     }
-    // check for empty category
+
     if (categoryMode === "select" && !selectedCategoryId) {
       setErrors((prev) => ({
         ...prev,

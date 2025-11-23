@@ -38,13 +38,15 @@ export default function TaskList() {
           setActiveCategory={setActiveCategory}
         />
       </div>
-      {filteredTasks.length === 0 && <EmptyTaskList />}
-
-      <AnimatePresence>
-        {filteredTasks.map((task) => (
-          <TaskItem key={task.id} task={task} keyId={task.id} />
-        ))}
-      </AnimatePresence>
+      {filteredTasks.length === 0 ? (
+        <EmptyTaskList />
+      ) : (
+        <AnimatePresence>
+          {filteredTasks.map((task) => (
+            <TaskItem key={task.id} task={task} keyId={task.id} />
+          ))}
+        </AnimatePresence>
+      )}
     </ul>
   );
 }

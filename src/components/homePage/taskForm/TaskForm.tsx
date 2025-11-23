@@ -47,7 +47,6 @@ export default function TaskForm() {
       category: { hasError: false, message: null },
     });
 
-    // check for empty title
     if (!title.trim()) {
       setErrors((prev) => ({
         ...prev,
@@ -58,7 +57,7 @@ export default function TaskForm() {
       }));
       return;
     }
-    // check for empty category
+
     if (categoryMode === "select" && !selectedCategoryId) {
       setErrors((prev) => ({
         ...prev,
@@ -141,7 +140,7 @@ export default function TaskForm() {
   }
 
   return (
-    <div className="h-fit relative  mt-13 w-[80%] grow flex items-center flex-col justify-center ">
+    <div className="h-fit relative  mt-13 w-full grow flex items-center flex-col justify-center ">
       <CustomHeadLine
         firstTitle="Add a new"
         midTitle="To-Do"
@@ -149,7 +148,7 @@ export default function TaskForm() {
       />
       <form
         onSubmit={handleSubmit}
-        className="bg-card/60 dark:bg-card/80 shadow-sm w-full hover:shadow-2xl dark:hover:shadow-black/50 transition-all duration-300 rounded-3xl  mx-auto p-4  max-w-lg flex flex-col gap-2  "
+        className="bg-card/60 dark:bg-card/80 shadow-sm w-full hover:shadow-2xl dark:hover:shadow-black/50 transition-all duration-300 rounded-3xl  mx-auto p-4 md:p-6  max-w-lg flex flex-col gap-2  "
       >
         <ul>
           {errors.title.hasError && errors.title.message && (
@@ -188,7 +187,7 @@ export default function TaskForm() {
 
         <div className="w-full sm:w-auto flex flex-col gap-2">
           <div className="flex items-center  justify-end">
-            <div className="flex gap-3">
+            <div className="grow flex gap-5 justify-around sm:grow-0 sm:justify-end mt-3">
               <button
                 onClick={() => {
                   setTitle("");

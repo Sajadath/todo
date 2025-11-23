@@ -10,7 +10,7 @@ function AnimatedCounter({ value }: { value: number }) {
 
   useEffect(() => {
     const controls = animate(count, value, {
-      duration: 0.8, // speed of animation
+      duration: 0.8,
       ease: "easeOut",
     });
     return controls.stop;
@@ -28,7 +28,7 @@ export default function TodoStats() {
     totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 font-semibold">
+    <div className=" grid grid-cols-2 md:grid-cols-4 gap-4 font-semibold">
       <div className="  bg-card/60 dark:bg-card/80 rounded-3xl shadow-sm hover:shadow-2xl dark:hover:shadow-black/75 duration-300 transition-all p-8 text-center">
         <div className="text-2xl font-bold dark:text-gray-100">
           <AnimatedCounter value={totalTasks} />

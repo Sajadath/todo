@@ -124,7 +124,6 @@ export default function EmptyTaskList() {
         glarePosition="all"
         className="w-full max-w-xl"
       >
-        {/* main card — we still track mouse inside this element for corners */}
         <motion.div
           ref={cardRef}
           onMouseMove={handleMouseMove}
@@ -137,7 +136,6 @@ export default function EmptyTaskList() {
                      bg-gradient-to-br from-indigo-400 via-indigo-600 to-indigo-800
                      shadow-2xl text-white"
         >
-          {/* decorative corner orbs (pointer-events-none so they don't block hover) */}
           <motion.div
             style={{ rotateX: tlXSpring, rotateY: tlYSpring }}
             className="pointer-events-none absolute -left-3 -top-3 w-12 h-12 rounded-full
@@ -174,10 +172,8 @@ export default function EmptyTaskList() {
             <div className="w-7 h-7 rounded-md bg-white/8 border border-white/20" />
           </motion.div>
 
-          {/* subtle inner dotted border */}
           <div className="absolute inset-0 rounded-3xl border border-white/20 border-dashed pointer-events-none" />
 
-          {/* content */}
           <div className={`${caveat.className} relative z-10 text-center`}>
             <h2 className="text-4xl font-bold mb-3 drop-shadow-md bg-gradient-to-r shadow-xl rounded-2xl from-black/20 via-black/50 to-black/90 w-fit mx-auto py-1   px-3">
               There are no tasks {taskCount > 0 ? "in this category" : "at all"}
