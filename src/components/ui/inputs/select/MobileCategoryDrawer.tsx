@@ -27,14 +27,11 @@ function MobileCategoryDrawer({
 
   useEffect(() => {
     if (isOpen) {
-      // Lock scroll
       document.body.style.overflow = "hidden";
     } else {
-      // Unlock scroll
       document.body.style.overflow = "";
     }
 
-    // Cleanup on unmount
     return () => {
       document.body.style.overflow = "";
     };
