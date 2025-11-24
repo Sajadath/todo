@@ -53,8 +53,8 @@ export default function EmptyTaskList() {
 
     const mag = 22 * influence;
 
-    const rotateX = -((cy === 0 ? 1 : -1) * (0.5 - py) * mag);
-    const rotateY = -((cx === 0 ? -1 : 1) * (px - 0.5) * mag);
+    const rotateX = -((cy === 0 ? 1 : -1) * (py - 0.5) * mag);
+    const rotateY = -((cx === 0 ? -1 : 1) * (0.5 - px) * mag);
 
     return { rotateX, rotateY };
   }
@@ -113,15 +113,13 @@ export default function EmptyTaskList() {
   return (
     <div className="flex items-center justify-center  p-8">
       <Tilt
+        tiltReverse
         tiltMaxAngleX={12}
         tiltMaxAngleY={12}
         perspective={900}
         scale={1.02}
         transitionSpeed={420}
-        glareEnable={true}
-        glareMaxOpacity={0.12}
-        glareColor="#ffffff"
-        glarePosition="all"
+        glareEnable={false}
         className="w-full max-w-xl"
       >
         <motion.div
